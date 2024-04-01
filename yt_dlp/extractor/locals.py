@@ -7,7 +7,6 @@ from ..utils import ExtractorError
 
 
 class LocalsIE(InfoExtractor):
-    # https://blog.locals.com/rumble-merged-with-locals-to-help-build-a-bigger-creator-economy/
     _VALID_URL = r'(?P<url>(?P<host>https?://(?P<community>[^\.]+)\.(?:locals|rumble)\.com)(?:/u?post/(?P<id>\d+)/.*|/content/(?P<content>[^/]+)/.*))'
     _TESTS = [{
         'url': 'https://santasurfing.locals.com/post/4451827/maui-updates-and-we-thank-you-very-much',
@@ -142,7 +141,6 @@ class LocalsIE(InfoExtractor):
             if video_matches.group('is_preview') == 'true':
                 media_type = 'trailer'
                 duration = 30
-                # self.report_warning(f'Downloading preview video. to login {self._login_hint("cookies")}')
 
             m3u8_url = host + video_matches.group('m3u8_source')
             formats = self._extract_m3u8_formats(m3u8_url, video_id, 'mp4', m3u8_id='hls', live=is_live, fatal=True)
